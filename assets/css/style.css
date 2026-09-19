@@ -127,7 +127,7 @@ button { font: inherit; color: inherit; }
 .theme-toggle[aria-pressed="true"] .icon-moon { display: none; }
 .theme-toggle[aria-pressed="true"] .icon-sun { display: block; }
 
-main { padding-top: 48px; padding-bottom: 24px; }
+main.wrap { padding-top: 56px; padding-bottom: 24px; }
 
 /* 첫 화면 */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 56px; align-items: center; margin-bottom: 40px; }
@@ -279,7 +279,7 @@ main { padding-top: 48px; padding-bottom: 24px; }
   .site-nav { flex-basis: 100%; order: 3; margin-left: -8px; padding-bottom: 6px; }
   .site-nav a { font-size: 14.5px; padding: 5px 9px; }
   .theme-toggle { margin-left: auto; width: 36px; height: 36px; }
-  main { padding-top: 28px; }
+  main.wrap { padding-top: 32px; }
   .hero { grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
   .hero-figure { order: -1; }
   .hero-figure img { width: 160px; }
