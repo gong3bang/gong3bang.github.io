@@ -37,6 +37,8 @@ scripts/new-work.sh "이름" my-tool        # 공공공구 항목 생성
 
 - `_drafts/`와 `_notes/`는 저장소에 올라가지 않습니다. 초안은 발행 전까지 로컬에만 있습니다.
 - 댓글은 giscus를 씁니다. `_config.yml`의 `giscus:` 값을 채우기 전까지는 나타나지 않습니다.
+- 사이트 공지는 `_config.yml`의 `notice:`에서 켜고 끕니다. `text`를 비우면 사라지고, `id`를 바꾸면 닫았던 사람에게도 다시 보입니다.
+- 라이트·다크 모드는 머리의 버튼으로 바꾸며, 선택은 그 브라우저에만 저장됩니다.
 - 글 분야는 `_data/categories.yml`에서, 연재는 `_data/series.yml`에서 관리합니다.
 
 ## 라이선스

@@ -4,8 +4,15 @@
       {% include mark.svg %}
       <span class="brand-name">공공공방</span>
     </a>
-    <nav class="site-nav" aria-label="주 메뉴">
-      {% for item in site.data.nav %}<a href="{{ item.url | relative_url }}">{% if item.mark %}<span class="mark">{{ item.mark }}</span>{% endif %}{{ item.label }}</a>{% endfor %}
-    </nav>
+    <div class="site-header-right">
+      <nav class="site-nav" aria-label="주 메뉴">
+        {% for item in site.data.nav %}<a href="{{ item.url | relative_url }}"{% if page.url == item.url or page.url contains item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="라이트·다크 모드 바꾸기" title="라이트·다크 모드">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
   </div>
 </header>
+{% include notice.html %}
