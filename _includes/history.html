@@ -1,0 +1,13 @@
+{%- if page.history and page.history.size > 0 -%}
+<section class="history">
+  <h2 class="history-title">개정 이력</h2>
+  <table>
+    <thead><tr><th>버전</th><th>날짜</th><th>고친 것</th></tr></thead>
+    <tbody>
+      {%- for h in page.history -%}
+      <tr><td>{{ h.version }}</td><td>{{ h.date | date: "%Y. %-m. %-d." }}</td><td>{{ h.note }}</td></tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</section>
+{%- endif -%}

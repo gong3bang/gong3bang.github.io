@@ -1,0 +1,29 @@
+---
+layout: default
+title: 공공공구
+permalink: /works/
+---
+<header class="page-header">
+  <h1 class="page-title"><span class="mark">工</span>공공공구</h1>
+  <p class="lead">직접 만든 도구. 무엇을 해결하는지, 30초 안에 돌려 보는 법, 한계와 주의를 함께 적습니다.</p>
+</header>
+
+{%- assign works = site.works | sort: "date" | reverse -%}
+{%- if works.size > 0 -%}
+<ul class="work-list">
+  {%- for w in works -%}
+  <li class="work-item">
+    <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
+    {%- if w.one_liner -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
+    <p class="post-meta">
+      {%- if w.status -%}<span>{{ w.status }}</span>{%- endif -%}
+      {%- if w.date -%}<time datetime="{{ w.date | date_to_xmlschema }}">{{ w.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
+      {%- if w.version -%}<span class="meta-version">{{ w.version }}</span>{%- endif -%}
+      {%- if w.repo -%}<a href="{{ w.repo }}">저장소</a>{%- endif -%}
+    </p>
+  </li>
+  {%- endfor -%}
+</ul>
+{%- else -%}
+<p class="empty">아직 올린 도구가 없습니다. 만들고 있습니다.</p>
+{%- endif -%}

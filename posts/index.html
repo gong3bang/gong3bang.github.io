@@ -1,0 +1,57 @@
+---
+layout: default
+title: 공공공부
+permalink: /posts/
+---
+{%- assign cats = site.data.categories -%}
+{%- assign posts = site.posts | where_exp: "p", "p.pinned != true" -%}
+
+<style>
+{%- for c in cats %}
+body:has(#{{ c.key }}:target) .tabs a[href="#{{ c.key }}"] { --tab-on: 1; }
+{%- endfor %}
+body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
+</style>
+
+<header class="page-header">
+  <h1 class="page-title"><span class="mark">攻</span>공공공부</h1>
+  <p class="lead">공공의 자리에서 필요해서 읽은 것을 파고들어 정리해 둡니다.</p>
+</header>
+
+<nav class="tabs" aria-label="분야">
+  <a href="#all">전체</a>
+  {%- for c in cats -%}
+  <a class="tab-cat" href="#{{ c.key }}">{{ c.name }}</a>
+  {%- endfor -%}
+</nav>
+
+<div class="panels">
+  {%- for c in cats -%}
+  <section id="{{ c.key }}" class="panel">
+    <h2 class="panel-title">{{ c.name }}</h2>
+    <p class="caption">{{ c.desc }}</p>
+    {%- assign found = 0 -%}
+    <ul class="post-list">
+      {%- for post in posts -%}
+      {%- if post.category == c.key -%}
+      {%- assign found = found | plus: 1 -%}
+      {% include post-item.html post=post %}
+      {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    {%- if found == 0 -%}<p class="empty">아직 이 분야에 올린 글이 없습니다.</p>{%- endif -%}
+  </section>
+  {%- endfor -%}
+
+  <section id="all" class="panel panel-all">
+    {%- if posts.size > 0 -%}
+    <ul class="post-list">
+      {%- for post in posts -%}
+      {% include post-item.html post=post %}
+      {%- endfor -%}
+    </ul>
+    {%- else -%}
+    <p class="empty">아직 올린 글이 없습니다. 먼저 읽고 있습니다.</p>
+    {%- endif -%}
+  </section>
+</div>

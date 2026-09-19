@@ -1,0 +1,62 @@
+title: 공공공방
+tagline: 먼저 읽고, 만들어 둡니다.
+description: 공공에서 일하며 필요해서 읽은 것, 정리한 것, 만든 것을 여기 둡니다. 공방장 공삼이 公 공공의 자리에서, 攻 파고들어 정리하고, 工 직접 만들어 둡니다.
+url: "https://gong3bang.github.io"
+baseurl: ""
+lang: ko
+timezone: Asia/Seoul
+encoding: utf-8
+
+# 테마 없이 자체 레이아웃만 쓴다 (github-pages 기본 primer 테마를 끈다)
+theme: null
+
+author:
+  name: 공방장 공삼
+  url: https://gong3bang.github.io/about/
+
+github_username: gong3bang
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+permalink: /posts/:year/:month/:title/
+excerpt_separator: "\n\n"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  works:
+    output: true
+    permalink: /works/:name/
+  attachments:
+    output: true
+    permalink: /attachments/:name/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post, version: v1.0 }
+  - scope: { path: "", type: works }
+    values: { layout: work }
+  - scope: { path: "", type: attachments }
+    values: { layout: attachment }
+  - scope: { path: "" }
+    values: { layout: page }
+
+feed:
+  posts_limit: 20
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - scripts
+  - _notes
+  - vendor
+  - node_modules

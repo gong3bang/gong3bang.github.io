@@ -1,0 +1,9 @@
+{%- assign p = include.post | default: page -%}
+{%- assign cat = site.data.categories | where: "key", p.category | first -%}
+{%- assign ser = site.data.series[p.series] -%}
+<p class="post-meta">
+  <span class="meta-cat"><span class="mark">攻</span>공공공부{% if cat %} · {{ cat.name }}{% endif %}</span>
+  {%- if ser -%}<span class="meta-series">{{ ser.name }}{% if p.issue %} {{ p.issue }}호{% endif %}</span>{%- endif -%}
+  <time class="meta-date" datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%Y. %-m. %-d." }}</time>
+  {%- if p.version -%}<span class="meta-version">{{ p.version }}</span>{%- endif -%}
+</p>

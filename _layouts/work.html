@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="post work">
+  <header class="post-header">
+    <p class="post-meta">
+      <span class="meta-cat"><span class="mark">工</span>공공공구</span>
+      {%- if page.status -%}<span class="meta-status">{{ page.status }}</span>{%- endif -%}
+      {%- if page.date -%}<time class="meta-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
+      {%- if page.version -%}<span class="meta-version">{{ page.version }}</span>{%- endif -%}
+    </p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {%- if page.one_liner -%}<p class="lead">{{ page.one_liner }}</p>{%- endif -%}
+    {%- if page.repo -%}<p class="work-repo"><a href="{{ page.repo }}">{{ page.repo | remove: "https://" }}</a>{% if page.license %} · {{ page.license }}{% endif %}</p>{%- endif -%}
+  </header>
+
+  <div class="body">
+    {{ content }}
+  </div>
+
+  {% include history.html %}
+
+  <footer class="post-footer">
+    <p class="notice">개인 의견이며 소속 기관의 입장이 아닙니다.</p>
+    <p class="end">끝.</p>
+    <p class="sign">공방장 공삼</p>
+  </footer>
+</article>

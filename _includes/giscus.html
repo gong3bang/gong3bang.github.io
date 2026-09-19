@@ -1,0 +1,28 @@
+{% comment %}
+댓글(giscus). 저장소 Discussions를 켜고 https://giscus.app 에서 받은 값을
+site.giscus (_config.yml) 에 넣으면 아래가 살아난다.
+  giscus:
+    repo: gong3bang/gong3bang.github.io
+    repo_id: ...
+    category: Comments
+    category_id: ...
+{% endcomment %}
+{%- if site.giscus.repo_id -%}
+<section class="comments" aria-label="댓글">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ site.giscus.repo }}"
+    data-repo-id="{{ site.giscus.repo_id }}"
+    data-category="{{ site.giscus.category }}"
+    data-category-id="{{ site.giscus.category_id }}"
+    data-mapping="pathname"
+    data-strict="1"
+    data-reactions-enabled="0"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
+{%- endif -%}

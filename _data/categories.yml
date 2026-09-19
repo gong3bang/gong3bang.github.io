@@ -1,0 +1,26 @@
+# 공공공부(글)의 분야. 글의 front matter `category:` 에 key 를 적는다.
+# 분야는 주제 구분일 뿐이다. 公(공공의 자리)은 모든 글의 도메인, 攻(파고들어 정리)은 모든 글의 태도다.
+
+- key: policy
+  name: 정책
+  desc: 국가 전략, 부처 지침, 예산 방향
+
+- key: law
+  name: 법제도
+  desc: 법령 조문, 고시, 가이드라인, 개인정보·저작권
+
+- key: business
+  name: 공공사업
+  desc: 사전협의, ISP/ISMP, 조달·계약, 감리·검수
+
+- key: case
+  name: 사례
+  desc: 기관·해외 도입 사례, 실패 사례
+
+- key: tech
+  name: 기술
+  desc: 새 학습법·모델·아키텍처 정리, LLM·RAG·에이전트 원리, 비교
+
+- key: security
+  name: 보안
+  desc: 프롬프트 인젝션, 모델 취약점, 망분리·CSAP

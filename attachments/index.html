@@ -1,0 +1,27 @@
+---
+layout: default
+title: 붙임
+permalink: /attachments/
+---
+<header class="page-header">
+  <h1 class="page-title">붙임</h1>
+  <p class="lead">내려받아 바로 쓰는 자료입니다. 번호는 처음부터 이어 붙이고, 고치면 버전을 올립니다.</p>
+</header>
+
+{%- assign atts = site.attachments | sort: "number" | reverse -%}
+{%- if atts.size > 0 -%}
+<ol class="attachment-list attachment-list-full">
+  {%- for a in atts -%}
+  <li>
+    <span class="num">붙임 {{ a.number }}.</span>
+    <a href="{{ a.url | relative_url }}">{{ a.title }}</a>
+    <span class="post-meta">
+      {%- if a.date -%}<time datetime="{{ a.date | date_to_xmlschema }}">{{ a.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
+      {%- if a.version -%}<span class="meta-version">{{ a.version }}</span>{%- endif -%}
+    </span>
+  </li>
+  {%- endfor -%}
+</ol>
+{%- else -%}
+<p class="empty">붙임은 글과 함께 하나씩 늘어납니다.</p>
+{%- endif -%}

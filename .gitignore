@@ -1,0 +1,17 @@
+# 초안과 개인 메모는 올리지 않는다 (_drafts 는 로컬 초안 폴더로 가는 심볼릭 링크)
+_drafts
+_notes
+
+# 빌드 산출물·로컬 도구
+_site
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+Gemfile.lock
+vendor
+.bundle
+.claude/
+
+# 시스템
+.DS_Store
+Thumbs.db

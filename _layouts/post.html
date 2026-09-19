@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    {% include post-meta.html %}
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  {% include summary-box.html %}
+
+  <div class="body">
+    {{ content }}
+  </div>
+
+  {%- if page.attachments and page.attachments.size > 0 -%}
+  <section class="post-attachments">
+    <h2>붙임</h2>
+    <ol class="attachment-list">
+      {%- for n in page.attachments -%}
+      {%- assign nn = n | append: "" -%}
+      {%- for a in site.attachments -%}
+      {%- assign an = a.number | append: "" -%}
+      {%- if an == nn -%}
+      <li><span class="num">붙임 {{ a.number }}.</span> <a href="{{ a.url | relative_url }}">{{ a.title }}</a>{% if a.version %} <span class="meta-version">{{ a.version }}</span>{% endif %}</li>
+      {%- endif -%}
+      {%- endfor -%}
+      {%- endfor -%}
+    </ol>
+  </section>
+  {%- endif -%}
+
+  {% include history.html %}
+
+  <footer class="post-footer">
+    <p class="notice">개인 의견이며 소속 기관의 입장이 아닙니다.</p>
+    <p class="end">끝.</p>
+    <p class="sign">공방장 공삼</p>
+  </footer>
+
+  {% include giscus.html %}
+</article>

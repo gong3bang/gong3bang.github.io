@@ -1,0 +1,7 @@
+# 연재. 글의 front matter `series:` 에 key 를, `issue:` 에 호수를 적는다. 없으면 생략.
+haedo:
+  name: 해도 되나요?
+  desc: 독자의 질문을 제목 그대로
+gongbaek:
+  name: 공공공백
+  desc: 나란히 놓고 빈칸을 찾는 비교

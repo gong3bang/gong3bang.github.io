@@ -1,0 +1,15 @@
+{%- assign lines = "" | split: "" -%}
+{%- for line in page.summary -%}
+{%- assign t = line | strip -%}
+{%- if t != "" -%}{%- assign lines = lines | push: t -%}{%- endif -%}
+{%- endfor -%}
+{%- if lines.size > 0 -%}
+<aside class="summary" aria-label="결론">
+  <p class="summary-label">결론</p>
+  <ul>
+    {%- for line in lines -%}
+    <li>{{ line }}</li>
+    {%- endfor -%}
+  </ul>
+</aside>
+{%- endif -%}

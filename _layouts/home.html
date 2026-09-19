@@ -1,0 +1,75 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-kicker">공공공방 공방장 공삼</p>
+    <h1 class="hero-title">먼저 읽고, 만들어 둡니다.</h1>
+    <p class="hero-desc">공공에서 일하며 필요해서 읽은 것, 정리한 것, 만든 것을 여기 둡니다.<br>공방장 공삼이 <span class="mark">公</span>공공의 자리에서, <span class="mark">攻</span>파고들어 정리하고, <span class="mark">工</span>직접 만들어 둡니다.</p>
+    <ul class="hero-gongs">
+      {%- for g in site.data.groups -%}
+      <li><a href="{{ g.url | relative_url }}"><span class="mark">{{ g.mark }}</span><span class="gong-verb">{{ g.name }} <span class="gong-sub">{{ g.verb }}</span></span><span class="gong-desc">{{ g.desc }}</span></a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="hero-figure" aria-hidden="true">
+    <img src="{{ '/assets/img/gongsam.png' | relative_url }}" alt="" width="220" height="275" loading="eager">
+  </div>
+</section>
+
+{{ content }}
+
+<section class="home-section">
+  <div class="section-head">
+    <h2><span class="mark">攻</span>공공공부</h2>
+    <a class="more" href="{{ '/posts/' | relative_url }}">전체</a>
+  </div>
+  {%- assign recent = site.posts | where_exp: "p", "p.pinned != true" | slice: 0, 5 -%}
+  {%- if recent.size > 0 -%}
+  <ul class="post-list">
+    {%- for post in recent -%}
+    {% include post-item.html post=post %}
+    {%- endfor -%}
+  </ul>
+  {%- else -%}
+  <p class="empty">아직 올린 글이 없습니다. 먼저 읽고 있습니다.</p>
+  {%- endif -%}
+</section>
+
+<section class="home-section">
+  <div class="section-head">
+    <h2><span class="mark">工</span>공공공구</h2>
+    <a class="more" href="{{ '/works/' | relative_url }}">전체</a>
+  </div>
+  {%- assign works = site.works | sort: "date" | reverse | slice: 0, 3 -%}
+  {%- if works.size > 0 -%}
+  <ul class="work-list">
+    {%- for w in works -%}
+    <li class="work-item">
+      <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
+      {%- if w.one_liner -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
+      <p class="post-meta">{% if w.status %}<span>{{ w.status }}</span>{% endif %}{% if w.version %}<span class="meta-version">{{ w.version }}</span>{% endif %}</p>
+    </li>
+    {%- endfor -%}
+  </ul>
+  {%- else -%}
+  <p class="empty">아직 올린 도구가 없습니다. 만들고 있습니다.</p>
+  {%- endif -%}
+</section>
+
+<section class="home-section">
+  <div class="section-head">
+    <h2>붙임</h2>
+    <a class="more" href="{{ '/attachments/' | relative_url }}">전체</a>
+  </div>
+  {%- assign atts = site.attachments | sort: "number" | reverse | slice: 0, 3 -%}
+  {%- if atts.size > 0 -%}
+  <ol class="attachment-list">
+    {%- for a in atts -%}
+    <li><span class="num">붙임 {{ a.number }}.</span> <a href="{{ a.url | relative_url }}">{{ a.title }}</a>{% if a.version %} <span class="meta-version">{{ a.version }}</span>{% endif %}</li>
+    {%- endfor -%}
+  </ol>
+  {%- else -%}
+  <p class="empty">붙임은 글과 함께 하나씩 늘어납니다.</p>
+  {%- endif -%}
+</section>

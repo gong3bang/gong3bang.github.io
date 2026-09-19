@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<article class="post attachment">
+  <header class="post-header">
+    <p class="post-meta">
+      <span class="meta-cat">붙임 {{ page.number }}.</span>
+      {%- if page.date -%}<time class="meta-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
+      {%- if page.version -%}<span class="meta-version">{{ page.version }}</span>{%- endif -%}
+    </p>
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  {%- if page.file -%}
+  <p class="download"><a class="button" href="{{ page.file | relative_url }}" download>내려받기</a> <span class="caption">{{ page.file | split: "/" | last }}</span></p>
+  {%- endif -%}
+
+  <div class="body">
+    {{ content }}
+  </div>
+
+  {%- if page.related_posts and page.related_posts.size > 0 -%}
+  <section class="related">
+    <h2>관련 글</h2>
+    <ul>
+      {%- for slug in page.related_posts -%}
+      {%- for post in site.posts -%}
+      {%- if post.url contains slug -%}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {%- endif -%}
+      {%- endfor -%}
+      {%- endfor -%}
+    </ul>
+  </section>
+  {%- endif -%}
+
+  {% include history.html %}
+
+  <footer class="post-footer">
+    <p class="notice">개인 의견이며 소속 기관의 입장이 아닙니다.</p>
+    <p class="end">끝.</p>
+    <p class="sign">공방장 공삼</p>
+  </footer>
+</article>

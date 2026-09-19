@@ -1,0 +1,7 @@
+<li class="post-item">
+  {% include post-meta.html post=include.post %}
+  <a class="post-item-title" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+  {%- if include.post.summary and include.post.summary.first -%}
+  <p class="post-item-summary">{{ include.post.summary.first }}</p>
+  {%- endif -%}
+</li>
