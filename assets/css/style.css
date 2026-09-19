@@ -112,7 +112,7 @@ button { font: inherit; color: inherit; }
 
 /* 머리 */
 .site-header { position: sticky; top: 0; z-index: 20; background: var(--header-bg); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-.site-header-inner { display: flex; align-items: center; gap: 12px 32px; flex-wrap: wrap; min-height: 68px; padding-top: 8px; padding-bottom: 8px; }
+.site-header-inner { display: flex; align-items: center; gap: 12px 32px; flex-wrap: wrap; min-height: 84px; padding-top: 18px; padding-bottom: 18px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; }
 .brand-name { font-size: 22px; font-weight: 700; letter-spacing: 0.02em; }
 .mark-svg { display: block; color: var(--fg); }
@@ -274,7 +274,7 @@ main { padding-top: 48px; padding-bottom: 24px; }
 }
 @media (max-width: 640px) {
   :root { --gutter: 16px; }
-  .site-header-inner { min-height: 60px; }
+  .site-header-inner { min-height: 64px; padding-top: 14px; padding-bottom: 10px; }
   .brand-name { font-size: 20px; }
   .site-nav { flex-basis: 100%; order: 3; margin-left: -8px; padding-bottom: 6px; }
   .site-nav a { font-size: 14.5px; padding: 5px 9px; }
