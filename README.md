@@ -14,33 +14,6 @@
 | | 작업실 소식 | 공방공지 | `_notices/` |
 | | 내려받아 쓰는 자료 | 붙임 | `_attachments/` + `assets/files/` |
 
-## 30초 실행
-
-```bash
-brew install ruby@3.3
-export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
-gem install bundler
-bundle install
-bundle exec jekyll serve --drafts --livereload
-```
-
-http://localhost:4000 에서 확인합니다. GitHub Pages가 `main`을 자동으로 빌드하므로 배포는 push만 하면 됩니다.
-
-글 쓰기:
-
-```bash
-scripts/new-post.sh "제목" law            # 공공공부 초안 생성 (분야: policy|law|business|case|tech|security)
-scripts/publish.sh _drafts/slug.md        # _posts 로 옮기고 날짜 붙임
-scripts/new-work.sh "이름" my-tool        # 공공공구 항목 생성
-```
-
-## 한계와 주의
-
-- `_drafts/`와 `_notes/`는 저장소에 올라가지 않습니다. 초안은 발행 전까지 로컬에만 있습니다.
-- 댓글은 giscus를 씁니다. `_config.yml`의 `giscus:` 값을 채우기 전까지는 나타나지 않습니다.
-- 공방공지는 `_notices/YYYY-MM-DD-slug.md`에 `title`, `date`만 적으면 올라갑니다.
-- 라이트·다크 모드는 머리의 버튼으로 바꾸며, 선택은 그 브라우저에만 저장됩니다.
-- 글 분야는 `_data/categories.yml`에서, 연재는 `_data/series.yml`에서 관리합니다.
 
 ## 라이선스
 
