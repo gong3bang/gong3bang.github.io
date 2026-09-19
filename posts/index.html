@@ -14,7 +14,7 @@ body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
 </style>
 
 <header class="page-header">
-  <h1 class="page-title"><span class="mark">攻</span>공공공부</h1>
+  <h1 class="page-title">{% include icon.html name="book-open" px=30 %}공공공부</h1>
   <p class="lead">공공의 자리에서 필요해서 읽은 것을 파고들어 정리해 둡니다.</p>
 </header>
 
@@ -29,7 +29,6 @@ body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
   {%- for c in cats -%}
   <section id="{{ c.key }}" class="panel">
     <h2 class="panel-title">{{ c.name }}</h2>
-    <p class="caption">{{ c.desc }}</p>
     {%- assign found = 0 -%}
     <ul class="post-list">
       {%- for post in posts -%}

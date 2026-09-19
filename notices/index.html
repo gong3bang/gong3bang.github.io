@@ -1,0 +1,24 @@
+---
+layout: default
+title: 공방공지
+permalink: /notices/
+---
+<header class="page-header">
+  <h1 class="page-title">{% include icon.html name="megaphone" px=30 %}공방공지</h1>
+  <p class="lead">우리 공방의 공지사항입니다.</p>
+</header>
+
+{%- assign notices = site.notices | sort: "date" | reverse -%}
+{%- if notices.size > 0 -%}
+<ul class="post-list notice-list">
+  {%- for n in notices -%}
+  <li class="post-item">
+    <p class="post-meta"><time datetime="{{ n.date | date_to_xmlschema }}">{{ n.date | date: "%Y. %-m. %-d." }}</time></p>
+    <a class="post-item-title" href="{{ n.url | relative_url }}">{{ n.title }}</a>
+    {%- if n.excerpt -%}<p class="post-item-summary">{{ n.excerpt | strip_html | strip_newlines | truncate: 90 }}</p>{%- endif -%}
+  </li>
+  {%- endfor -%}
+</ul>
+{%- else -%}
+<p class="empty">아직 공지가 없습니다.</p>
+{%- endif -%}

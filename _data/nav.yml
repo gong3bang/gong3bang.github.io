@@ -2,6 +2,8 @@
   url: /posts/
 - label: 공공공구
   url: /works/
+- label: 공방공지
+  url: /notices/
 - label: 붙임
   url: /attachments/
 - label: 소개

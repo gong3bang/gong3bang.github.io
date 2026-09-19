@@ -1,15 +1,21 @@
-# 사이트의 두 묶음. 첫 화면과 소개에 쓴다.
-# 公 은 도메인(공공의 자리에서)이라 모든 것에 걸리고, 묶음은 攻(태도)과 工(만든 것) 둘이다.
+# 첫 화면에 나란히 놓는 세 묶음. icon 은 _includes/icon.html 의 이름.
 - key: study
-  mark: 攻
   name: 공공공부
+  icon: book-open
   verb: 파고들어 정리한 것
   desc: 정책 · 법제도 · 공공사업 · 사례 · 기술 · 보안
   url: /posts/
 
 - key: tools
-  mark: 工
   name: 공공공구
+  icon: wrench
   verb: 직접 만든 도구
   desc: 바로 내려받아 돌려 보는 것
   url: /works/
+
+- key: notices
+  name: 공방공지
+  icon: megaphone
+  verb: 작업실 소식
+  desc: 새로 올린 것, 고친 것, 쉬는 날
+  url: /notices/

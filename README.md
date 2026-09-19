@@ -11,6 +11,7 @@
 | 公 | 도메인. 공공의 자리에서 | 사이트 전체 | |
 | 攻 | 태도. 파고들어 정리한 것. 분야는 정책 · 법제도 · 공공사업 · 사례 · 기술 · 보안 | 공공공부 | `_posts/` |
 | 工 | 직접 만든 도구 | 공공공구 | `_works/` |
+| | 작업실 소식 | 공방공지 | `_notices/` |
 | | 내려받아 쓰는 자료 | 붙임 | `_attachments/` + `assets/files/` |
 
 ## 30초 실행
@@ -37,11 +38,13 @@ scripts/new-work.sh "이름" my-tool        # 공공공구 항목 생성
 
 - `_drafts/`와 `_notes/`는 저장소에 올라가지 않습니다. 초안은 발행 전까지 로컬에만 있습니다.
 - 댓글은 giscus를 씁니다. `_config.yml`의 `giscus:` 값을 채우기 전까지는 나타나지 않습니다.
-- 사이트 공지는 `_config.yml`의 `notice:`에서 켜고 끕니다. `text`를 비우면 사라지고, `id`를 바꾸면 닫았던 사람에게도 다시 보입니다.
+- 공방공지는 `_notices/YYYY-MM-DD-slug.md`에 `title`, `date`만 적으면 올라갑니다.
 - 라이트·다크 모드는 머리의 버튼으로 바꾸며, 선택은 그 브라우저에만 저장됩니다.
 - 글 분야는 `_data/categories.yml`에서, 연재는 `_data/series.yml`에서 관리합니다.
 
 ## 라이선스
+
+아이콘은 [Lucide](https://lucide.dev) (ISC 라이선스)를 씁니다.
 
 글은 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ko), 코드는 [MIT](LICENSE). 모든 글은 개인 의견이며 소속 기관의 입장이 아닙니다.
 

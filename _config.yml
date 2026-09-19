@@ -37,6 +37,9 @@ collections:
   attachments:
     output: true
     permalink: /attachments/:name/
+  notices:
+    output: true
+    permalink: /notices/:name/
 
 defaults:
   - scope: { path: "", type: posts }
@@ -45,18 +48,14 @@ defaults:
     values: { layout: work }
   - scope: { path: "", type: attachments }
     values: { layout: attachment }
+  - scope: { path: "", type: notices }
+    values: { layout: notice }
   - scope: { path: "" }
     values: { layout: page }
 
 feed:
   posts_limit: 20
 
-# 사이트 공지. text 를 비우면 사라진다. id 를 바꾸면 닫았던 사람에게도 다시 보인다.
-notice:
-  id: "2026-09-20"
-  text: 공공공방을 열었습니다. 글과 도구는 차례로 올라옵니다.
-  url: /about/
-  link_text: 소개 보기
 
 exclude:
   - Gemfile
