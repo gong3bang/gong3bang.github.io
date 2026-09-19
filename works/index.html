@@ -3,11 +3,9 @@ layout: default
 title: 공공공구
 permalink: /works/
 ---
-<header class="page-header">
-  <h1 class="page-title">{% include icon.html name="wrench" px=30 %}공공공구</h1>
-  <p class="lead">직접 만든 도구를 공유합니다.</p>
-</header>
+{% include page-head.html icon="wrench" kicker="工 직접 만든 것" title="공공공구" lead="직접 만든 도구를 공유합니다." %}
 
+<div class="card list-card">
 {%- assign works = site.works | sort: "date" | reverse -%}
 {%- if works.size > 0 -%}
 <ul class="work-list">
@@ -25,5 +23,6 @@ permalink: /works/
   {%- endfor -%}
 </ul>
 {%- else -%}
-<p class="empty">아직 올린 도구가 없습니다. 만들고 있습니다.</p>
+{% include empty.html icon="wrench" text="아직 올린 도구가 없습니다. 만들고 있습니다." %}
 {%- endif -%}
+</div>

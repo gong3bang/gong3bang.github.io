@@ -8,93 +8,100 @@ layout: default
     <p class="hero-desc">공공에서 일하며 필요해서 읽은 것, 정리한 것, 만든 것을 여기 둡니다.<br>공방장 공삼이 <span class="mark">公</span>공공의 자리에서, <span class="mark">攻</span>파고들어 정리하고, <span class="mark">工</span>직접 만들어 둡니다.</p>
   </div>
   <div class="hero-figure" aria-hidden="true">
-    <img src="{{ '/assets/img/gongsam.png' | relative_url }}" alt="" width="220" height="275" loading="eager">
+    <img src="{{ '/assets/img/gongsam.png' | relative_url }}" alt="" width="250" height="312" loading="eager">
   </div>
 </section>
-
 
 {{ content }}
 
 <div class="home-grid">
-  <section class="home-section">
+  <section class="card home-section">
     <div class="section-head">
       <h2>{% include icon.html name="book-open" %}공공공부</h2>
       <a class="more" href="{{ '/posts/' | relative_url }}" aria-label="공공공부 모두 보기" title="공공공부 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
     </div>
     {%- assign g = site.data.groups | where: "key", "study" | first -%}
     <p class="section-caption">{{ g.verb }}</p>
-    {%- assign recent = site.posts | where_exp: "p", "p.pinned != true" | slice: 0, 5 -%}
-    {%- if recent.size > 0 -%}
-    <ul class="post-list compact">
-      {%- for post in recent -%}
-      {% include post-item.html post=post %}
-      {%- endfor -%}
-    </ul>
-    {%- else -%}
-    <p class="empty">아직 올린 글이 없습니다. 먼저 읽고 있습니다.</p>
-    {%- endif -%}
+    <div class="section-body">
+      {%- assign recent = site.posts | where_exp: "p", "p.pinned != true" | slice: 0, 5 -%}
+      {%- if recent.size > 0 -%}
+      <ul class="post-list">
+        {%- for post in recent -%}
+        {% include post-item.html post=post %}
+        {%- endfor -%}
+      </ul>
+      {%- else -%}
+      {% include empty.html icon="book-open" text="아직 올린 글이 없습니다. 먼저 읽고 있습니다." %}
+      {%- endif -%}
+    </div>
   </section>
 
-  <section class="home-section">
+  <section class="card home-section">
     <div class="section-head">
       <h2>{% include icon.html name="wrench" %}공공공구</h2>
       <a class="more" href="{{ '/works/' | relative_url }}" aria-label="공공공구 모두 보기" title="공공공구 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
     </div>
     {%- assign g = site.data.groups | where: "key", "tools" | first -%}
     <p class="section-caption">{{ g.verb }}</p>
-    {%- assign works = site.works | sort: "date" | reverse | slice: 0, 5 -%}
-    {%- if works.size > 0 -%}
-    <ul class="work-list">
-      {%- for w in works -%}
-      <li class="work-item">
-        <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
-        {%- if w.one_liner -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
-        <p class="post-meta">{% if w.status %}<span>{{ w.status }}</span>{% endif %}{% if w.version %}<span class="meta-version">{{ w.version }}</span>{% endif %}</p>
-      </li>
-      {%- endfor -%}
-    </ul>
-    {%- else -%}
-    <p class="empty">아직 올린 도구가 없습니다. 만들고 있습니다.</p>
-    {%- endif -%}
+    <div class="section-body">
+      {%- assign works = site.works | sort: "date" | reverse | slice: 0, 5 -%}
+      {%- if works.size > 0 -%}
+      <ul class="work-list">
+        {%- for w in works -%}
+        <li class="work-item">
+          <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
+          {%- if w.one_liner -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
+          <p class="post-meta">{% if w.status %}<span>{{ w.status }}</span>{% endif %}{% if w.version %}<span class="meta-version">{{ w.version }}</span>{% endif %}</p>
+        </li>
+        {%- endfor -%}
+      </ul>
+      {%- else -%}
+      {% include empty.html icon="wrench" text="아직 올린 도구가 없습니다. 만들고 있습니다." %}
+      {%- endif -%}
+    </div>
   </section>
 
-  <section class="home-section">
+  <section class="card home-section">
     <div class="section-head">
       <h2>{% include icon.html name="megaphone" %}공방공지</h2>
       <a class="more" href="{{ '/notices/' | relative_url }}" aria-label="공방공지 모두 보기" title="공방공지 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
     </div>
     {%- assign g = site.data.groups | where: "key", "notices" | first -%}
     <p class="section-caption">{{ g.verb }}</p>
-    {%- assign notices = site.notices | sort: "date" | reverse | slice: 0, 5 -%}
-    {%- if notices.size > 0 -%}
-    <ul class="post-list compact notice-list">
-      {%- for n in notices -%}
-      <li class="post-item">
-        <p class="post-meta"><time datetime="{{ n.date | date_to_xmlschema }}">{{ n.date | date: "%Y. %-m. %-d." }}</time></p>
-        <a class="post-item-title" href="{{ n.url | relative_url }}">{{ n.title }}</a>
-      </li>
-      {%- endfor -%}
-    </ul>
-    {%- else -%}
-    <p class="empty">아직 공지가 없습니다.</p>
-    {%- endif -%}
+    <div class="section-body">
+      {%- assign notices = site.notices | sort: "date" | reverse | slice: 0, 5 -%}
+      {%- if notices.size > 0 -%}
+      <ul class="post-list notice-list">
+        {%- for n in notices -%}
+        <li class="post-item">
+          <p class="post-meta"><time datetime="{{ n.date | date_to_xmlschema }}">{{ n.date | date: "%Y. %-m. %-d." }}</time></p>
+          <a class="post-item-title" href="{{ n.url | relative_url }}">{{ n.title }}</a>
+        </li>
+        {%- endfor -%}
+      </ul>
+      {%- else -%}
+      {% include empty.html icon="megaphone" text="아직 공지가 없습니다." %}
+      {%- endif -%}
+    </div>
   </section>
 </div>
 
-<section class="home-section">
+<section class="card home-section wide">
   <div class="section-head">
     <h2>{% include icon.html name="paperclip" %}붙임</h2>
     <a class="more" href="{{ '/attachments/' | relative_url }}" aria-label="붙임 모두 보기" title="붙임 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
   </div>
   <p class="section-caption">내려받아 쓰는 자료</p>
-  {%- assign atts = site.attachments | sort: "number" | reverse | slice: 0, 3 -%}
-  {%- if atts.size > 0 -%}
-  <ol class="attachment-list">
-    {%- for a in atts -%}
-    <li><span class="num">붙임 {{ a.number }}.</span> <a href="{{ a.url | relative_url }}">{{ a.title }}</a>{% if a.version %} <span class="meta-version">{{ a.version }}</span>{% endif %}</li>
-    {%- endfor -%}
-  </ol>
-  {%- else -%}
-  <p class="empty">아직 등록된 붙임이 없습니다.</p>
-  {%- endif -%}
+  <div class="section-body">
+    {%- assign atts = site.attachments | sort: "number" | reverse | slice: 0, 3 -%}
+    {%- if atts.size > 0 -%}
+    <ol class="attachment-list">
+      {%- for a in atts -%}
+      <li><span class="num">붙임 {{ a.number }}.</span> <a href="{{ a.url | relative_url }}">{{ a.title }}</a>{% if a.version %} <span class="meta-version">{{ a.version }}</span>{% endif %}</li>
+      {%- endfor -%}
+    </ol>
+    {%- else -%}
+    {% include empty.html icon="paperclip" text="아직 등록된 붙임이 없습니다." %}
+    {%- endif -%}
+  </div>
 </section>

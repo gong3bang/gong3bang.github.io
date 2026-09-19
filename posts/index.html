@@ -13,10 +13,7 @@ body:has(#{{ c.key }}:target) .tabs a[href="#{{ c.key }}"] { --tab-on: 1; }
 body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
 </style>
 
-<header class="page-header">
-  <h1 class="page-title">{% include icon.html name="book-open" px=30 %}공공공부</h1>
-  <p class="lead">공공의 자리에서 필요해서 읽은 것을 파고들어 정리해 둡니다.</p>
-</header>
+{% include page-head.html icon="book-open" kicker="攻 파고들어 정리한 것" title="공공공부" lead="공공의 자리에서 필요해서 읽은 것을 파고들어 정리해 둡니다." %}
 
 <nav class="tabs" aria-label="분야">
   <a href="#all">전체</a>
@@ -25,7 +22,7 @@ body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
   {%- endfor -%}
 </nav>
 
-<div class="panels">
+<div class="panels card list-card">
   {%- for c in cats -%}
   <section id="{{ c.key }}" class="panel">
     <h2 class="panel-title">{{ c.name }}</h2>
@@ -38,7 +35,7 @@ body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
       {%- endif -%}
       {%- endfor -%}
     </ul>
-    {%- if found == 0 -%}<p class="empty">아직 이 분야에 올린 글이 없습니다.</p>{%- endif -%}
+    {%- if found == 0 -%}{% include empty.html icon="book-open" text="아직 이 분야에 올린 글이 없습니다." %}{%- endif -%}
   </section>
   {%- endfor -%}
 
@@ -50,7 +47,7 @@ body:not(:has(.panel:target)) .tabs a[href="#all"] { --tab-on: 1; }
       {%- endfor -%}
     </ul>
     {%- else -%}
-    <p class="empty">아직 올린 글이 없습니다. 먼저 읽고 있습니다.</p>
+    {% include empty.html icon="book-open" text="아직 올린 글이 없습니다. 먼저 읽고 있습니다." %}
     {%- endif -%}
   </section>
 </div>
