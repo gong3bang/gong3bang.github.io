@@ -223,6 +223,7 @@ main.wrap { padding-top: 56px; padding-bottom: 24px; }
 .page-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--link); font-weight: 600; font-size: 14px; margin: 0 0 8px; letter-spacing: 0.02em; }
 .page-title { font-size: 40px; font-weight: 700; }
 .page-head .lead { margin-top: 8px; }
+.page-head .lead a { color: var(--link); }
 
 /* 분야 탭 (해시로 동작, 스크립트 없음) */
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
@@ -279,7 +280,7 @@ main.wrap { padding-top: 56px; padding-bottom: 24px; }
 .about-figure::before { content: ""; position: absolute; inset: 8% -12% -4% -12%; border-radius: 50%; background: radial-gradient(closest-side, var(--halo), transparent); z-index: 0; }
 .about-figure img { position: relative; z-index: 1; display: block; width: 260px; height: auto; filter: drop-shadow(0 18px 26px rgba(20,22,28,0.16)); animation: float 4.5s ease-in-out infinite; }
 .about-contact h2 { font-size: 22px; font-weight: 700; margin: 0 0 14px; }
-.contact-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.contact-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .contact-cards li { margin: 0; }
 .contact-card { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: center; padding: 18px 20px; border: 1px solid var(--rule); border-radius: var(--radius); text-decoration: none; color: var(--fg); background: var(--bg-raised); box-shadow: var(--shadow); }
 .contact-card:hover { border-color: var(--link); }
