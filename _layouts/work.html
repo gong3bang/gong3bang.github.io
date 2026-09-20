@@ -4,15 +4,32 @@ layout: default
 <article class="post work">
   <header class="post-header">
     <p class="post-meta">
-      <span class="meta-cat"><span class="mark">工</span>공공공구</span>
+      <span class="meta-cat">공공공구</span>
+      {%- if page.source == "github" -%}<span class="meta-source">GitHub</span>{%- endif -%}
       {%- if page.status -%}<span class="meta-status">{{ page.status }}</span>{%- endif -%}
+      {%- if page.language and page.language != "" -%}<span>{{ page.language }}</span>{%- endif -%}
       {%- if page.date -%}<time class="meta-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
       {%- if page.version -%}<span class="meta-version">{{ page.version }}</span>{%- endif -%}
     </p>
     <h1 class="post-title">{{ page.title }}</h1>
-    {%- if page.one_liner -%}<p class="lead">{{ page.one_liner }}</p>{%- endif -%}
-    {%- if page.repo -%}<p class="work-repo"><a href="{{ page.repo }}">{{ page.repo | remove: "https://" }}</a>{% if page.license %} · {{ page.license }}{% endif %}</p>{%- endif -%}
+    {%- if page.one_liner and page.one_liner != "" -%}<p class="lead">{{ page.one_liner }}</p>{%- endif -%}
   </header>
+
+  {%- if page.repo and page.repo != "" -%}
+  <p class="external-note">
+    <a class="button" href="{{ page.repo }}" target="_blank" rel="noopener">GitHub에서 보기 {% include icon.html name="arrow-up-right" px=18 %}</a>
+    {%- if page.homepage and page.homepage != "" -%} <a class="button button-ghost" href="{{ page.homepage }}" target="_blank" rel="noopener">사이트 {% include icon.html name="arrow-up-right" px=18 %}</a>{%- endif -%}
+  </p>
+  {%- endif -%}
+
+  {%- if page.source == "github" -%}
+  <dl class="facts">
+    {%- if page.updated -%}<dt>마지막 변경</dt><dd>{{ page.updated | date: "%Y. %-m. %-d." }}</dd>{%- endif -%}
+    {%- if page.license and page.license != "" -%}<dt>라이선스</dt><dd>{{ page.license }}</dd>{%- endif -%}
+    {%- if page.stars and page.stars > 0 -%}<dt>별</dt><dd>{{ page.stars }}</dd>{%- endif -%}
+    {%- if page.topics and page.topics.size > 0 -%}<dt>주제</dt><dd>{% for t in page.topics %}<span class="topic">{{ t }}</span>{% endfor %}</dd>{%- endif -%}
+  </dl>
+  {%- endif -%}
 
   <div class="body">
     {{ content }}
@@ -20,9 +37,11 @@ layout: default
 
   {% include history.html %}
 
+  {%- if page.source != "github" -%}
   <footer class="post-footer">
     <p class="notice">개인 의견이며 소속 기관의 입장이 아닙니다.</p>
     <p class="end">끝.</p>
     <p class="sign">공방장 공삼</p>
   </footer>
+  {%- endif -%}
 </article>

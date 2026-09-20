@@ -47,15 +47,11 @@ layout: default
     {%- assign g = site.data.groups | where: "key", "tools" | first -%}
     <p class="section-caption">{{ g.verb }}</p>
     <div class="section-body">
-      {%- assign works = site.works | sort: "date" | reverse | slice: 0, 5 -%}
+      {%- assign works = site.works | sort: "updated" | reverse | slice: 0, 5 -%}
       {%- if works.size > 0 -%}
       <ul class="work-list">
         {%- for w in works -%}
-        <li class="work-item">
-          <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
-          {%- if w.one_liner -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
-          <p class="post-meta">{% if w.status %}<span>{{ w.status }}</span>{% endif %}{% if w.version %}<span class="meta-version">{{ w.version }}</span>{% endif %}</p>
-        </li>
+        {% include work-item.html work=w %}
         {%- endfor -%}
       </ul>
       {%- else -%}

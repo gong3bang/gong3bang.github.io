@@ -1,0 +1,16 @@
+{%- assign w = include.work -%}
+<li class="work-item">
+  <p class="post-meta">
+    <span class="meta-cat">공공공구</span>
+    {%- if w.source == "github" -%}<span class="meta-source">GitHub</span>{%- endif -%}
+    {%- if w.status -%}<span>{{ w.status }}</span>{%- endif -%}
+    {%- if w.language and w.language != "" -%}<span>{{ w.language }}</span>{%- endif -%}
+    {%- if w.updated -%}<time datetime="{{ w.updated | date_to_xmlschema }}">{{ w.updated | date: "%Y. %-m. %-d." }}</time>{%- elsif w.date -%}<time datetime="{{ w.date | date_to_xmlschema }}">{{ w.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
+    {%- if w.version -%}<span class="meta-version">{{ w.version }}</span>{%- endif -%}
+  </p>
+  <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
+  {%- if w.one_liner and w.one_liner != "" -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
+  {%- if w.topics and w.topics.size > 0 -%}
+  <p class="topics">{% for t in w.topics %}<span class="topic">{{ t }}</span>{% endfor %}</p>
+  {%- endif -%}
+</li>

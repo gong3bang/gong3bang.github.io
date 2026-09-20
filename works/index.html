@@ -3,23 +3,14 @@ layout: default
 title: 공공공구
 permalink: /works/
 ---
-{% include page-head.html icon="wrench" kicker="직접 만든 것" title="공공공구" lead="직접 만든 도구를 공유합니다." %}
+{% include page-head.html icon="wrench" kicker="직접 만든 것" title="공공공구" lead="직접 만든 도구를 공유합니다. 저장소는 <a href=\"https://github.com/gong3bang\" target=\"_blank\" rel=\"noopener\">GitHub github.com/gong3bang</a>에 있습니다." %}
 
 <div class="card list-card">
-{%- assign works = site.works | sort: "date" | reverse -%}
+{%- assign works = site.works | sort: "updated" | reverse -%}
 {%- if works.size > 0 -%}
 <ul class="work-list">
   {%- for w in works -%}
-  <li class="work-item">
-    <a class="work-title" href="{{ w.url | relative_url }}">{{ w.title }}</a>
-    {%- if w.one_liner -%}<p class="work-one-liner">{{ w.one_liner }}</p>{%- endif -%}
-    <p class="post-meta">
-      {%- if w.status -%}<span>{{ w.status }}</span>{%- endif -%}
-      {%- if w.date -%}<time datetime="{{ w.date | date_to_xmlschema }}">{{ w.date | date: "%Y. %-m. %-d." }}</time>{%- endif -%}
-      {%- if w.version -%}<span class="meta-version">{{ w.version }}</span>{%- endif -%}
-      {%- if w.repo -%}<a href="{{ w.repo }}">저장소</a>{%- endif -%}
-    </p>
-  </li>
+  {% include work-item.html work=w %}
   {%- endfor -%}
 </ul>
 {%- else -%}

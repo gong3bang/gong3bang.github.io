@@ -203,6 +203,14 @@ main.wrap { padding-top: 56px; padding-bottom: 24px; }
 .post-item-title .ext { display: inline-flex; vertical-align: middle; color: var(--muted); margin-left: 2px; }
 .post-item-title .ext .icon { color: inherit; }
 .external-note { margin: 0 0 28px; }
+.button-ghost { background: transparent; color: var(--fg); border: 1px solid var(--rule); margin-left: 8px; }
+.button-ghost:hover { border-color: var(--link); color: var(--link); background: var(--link-soft); }
+.topics { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; }
+.topic { display: inline-block; font-size: 12.5px; padding: 2px 9px; border-radius: 999px; background: var(--bg-soft); color: var(--muted); }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0 0 28px; font-size: 15px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.facts .topic { margin-right: 4px; }
 .external-note .button .icon { color: inherit; }
 .post-meta .mark { margin-right: 0.25em; }
 .attachment-list { list-style: none; padding: 0; margin: 0; }
