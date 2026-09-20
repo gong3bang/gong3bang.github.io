@@ -1,7 +1,10 @@
-<li class="post-item">
-  {% include post-meta.html post=include.post %}
-  <a class="post-item-title" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
-  {%- if include.post.summary and include.post.summary.first -%}
-  <p class="post-item-summary">{{ include.post.summary.first }}</p>
+{%- assign p = include.post -%}
+{%- assign href = p.url | relative_url -%}
+{%- if p.external_url -%}{%- assign href = p.external_url -%}{%- endif -%}
+<li class="post-item{% if p.external_url %} is-external{% endif %}">
+  {% include post-meta.html post=p %}
+  <a class="post-item-title" href="{{ href }}"{% if p.external_url %} target="_blank" rel="noopener"{% endif %}>{{ p.title }}{% if p.external_url %} <span class="ext" aria-label="새 창에서 열림">{% include icon.html name="arrow-up-right" px=16 %}</span>{% endif %}</a>
+  {%- if p.summary and p.summary.first and p.summary.first != "" -%}
+  <p class="post-item-summary">{{ p.summary.first }}</p>
   {%- endif -%}
 </li>

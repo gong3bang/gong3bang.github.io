@@ -1,0 +1,38 @@
+name: 네이버 블로그 RSS 가져오기
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # 3시간마다 (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naver-rss
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: RSS 읽어 _posts 만들기
+        run: python3 scripts/fetch_naver.py "https://rss.blog.naver.com/gong3bang.xml"
+
+      - name: 바뀐 것이 있으면 커밋
+        run: |
+          if [ -n "$(git status --porcelain _posts)" ]; then
+            git config user.name "공삼"
+            git config user.email "331262403+gong3bang@users.noreply.github.com"
+            git add _posts
+            git commit -m "공공공부: 네이버 블로그 글 가져옴"
+            git push
+          else
+            echo "새로 가져올 글이 없습니다."
+          fi

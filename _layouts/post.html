@@ -7,7 +7,11 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
   </header>
 
+  {%- if page.external_url -%}
+  <p class="external-note"><a class="button" href="{{ page.external_url }}" target="_blank" rel="noopener">네이버 블로그에서 읽기 {% include icon.html name="arrow-up-right" px=18 %}</a></p>
+  {%- else -%}
   {% include summary-box.html %}
+  {%- endif -%}
 
   <div class="body">
     {{ content }}

@@ -199,6 +199,11 @@ main.wrap { padding-top: 56px; padding-bottom: 24px; }
 .post-meta { display: flex; flex-wrap: wrap; gap: 0 0.5em; margin: 0 0 4px; font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 .post-meta > * + *::before { content: "·"; margin-right: 0.5em; color: var(--rule); }
 .post-meta .meta-cat { color: var(--link); font-weight: 600; }
+.post-meta .meta-source { color: var(--muted); }
+.post-item-title .ext { display: inline-flex; vertical-align: middle; color: var(--muted); margin-left: 2px; }
+.post-item-title .ext .icon { color: inherit; }
+.external-note { margin: 0 0 28px; }
+.external-note .button .icon { color: inherit; }
 .post-meta .mark { margin-right: 0.25em; }
 .attachment-list { list-style: none; padding: 0; margin: 0; }
 .attachment-list li { padding: 12px 0; border-top: 1px solid var(--rule); margin: 0; }
