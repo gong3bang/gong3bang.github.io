@@ -2,22 +2,25 @@
 layout: default
 ---
 <section class="hero">
+  <div class="giant" aria-hidden="true"><span>公</span><span>攻</span><span>工</span></div>
   <div class="hero-text">
     <p class="hero-kicker">공공공방 공방장 공삼</p>
     <h1 class="hero-title">먼저 읽고,<br><span class="hl">만들어 둡니다.</span></h1>
     <p class="hero-desc">공공에서 일하며 필요해서 읽은 것, 정리한 것, 만든 것을 여기 둡니다.<br>공방장 공삼이 <span class="mark">公</span>공공의 자리에서, <span class="mark">攻</span>파고들어 정리하고, <span class="mark">工</span>직접 만들어 둡니다.</p>
   </div>
   <div class="hero-figure" aria-hidden="true">
+    <span class="bubble">먼저 읽는 중<i></i><i></i><i></i></span>
     <img src="{{ '/assets/img/gongsam.png' | relative_url }}" alt="" width="250" height="312" loading="eager">
   </div>
 </section>
+
 
 {{ content }}
 
 <div class="home-grid">
   <section class="card home-section">
     <div class="section-head">
-      <h2><span class="icon-chip">{% include icon.html name="book-open" px=22 %}</span>공공공부</h2>
+      <h2><span class="icon-chip">{% include icon.html name="book-open" px=22 %}</span>공공공부<span class="num-tag">001</span></h2>
       <a class="more" href="{{ '/posts/' | relative_url }}" aria-label="공공공부 모두 보기" title="공공공부 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
     </div>
     {%- assign g = site.data.groups | where: "key", "study" | first -%}
@@ -38,7 +41,7 @@ layout: default
 
   <section class="card home-section">
     <div class="section-head">
-      <h2><span class="icon-chip">{% include icon.html name="wrench" px=22 %}</span>공공공구</h2>
+      <h2><span class="icon-chip">{% include icon.html name="wrench" px=22 %}</span>공공공구<span class="num-tag">002</span></h2>
       <a class="more" href="{{ '/works/' | relative_url }}" aria-label="공공공구 모두 보기" title="공공공구 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
     </div>
     {%- assign g = site.data.groups | where: "key", "tools" | first -%}
@@ -63,7 +66,7 @@ layout: default
 
   <section class="card home-section">
     <div class="section-head">
-      <h2><span class="icon-chip">{% include icon.html name="megaphone" px=22 %}</span>공방공지</h2>
+      <h2><span class="icon-chip">{% include icon.html name="megaphone" px=22 %}</span>공방공지<span class="num-tag">003</span></h2>
       <a class="more" href="{{ '/notices/' | relative_url }}" aria-label="공방공지 모두 보기" title="공방공지 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
     </div>
     {%- assign g = site.data.groups | where: "key", "notices" | first -%}
@@ -88,7 +91,7 @@ layout: default
 
 <section class="card home-section wide">
   <div class="section-head">
-    <h2><span class="icon-chip">{% include icon.html name="paperclip" px=22 %}</span>붙임</h2>
+    <h2><span class="icon-chip">{% include icon.html name="paperclip" px=22 %}</span>붙임<span class="num-tag">004</span></h2>
     <a class="more" href="{{ '/attachments/' | relative_url }}" aria-label="붙임 모두 보기" title="붙임 모두 보기">{% include icon.html name="arrow-right" px=20 %}</a>
   </div>
   <p class="section-caption">내려받아 쓰는 자료</p>
@@ -104,4 +107,13 @@ layout: default
     {% include empty.html icon="paperclip" text="아직 등록된 붙임이 없습니다." %}
     {%- endif -%}
   </div>
+</section>
+
+<section class="cta">
+  <div class="cta-text">
+    <p class="cta-kicker">{% include mark.svg %}</p>
+    <h2 class="cta-title">궁금한 것, 필요한 도구가 있으면 알려 주세요.</h2>
+    <p class="cta-desc">읽어 보고 정리하거나, 만들 수 있으면 만들어 둡니다.</p>
+  </div>
+  <a class="cta-button" href="{{ '/about/' | relative_url }}">연락하기 {% include icon.html name="arrow-right" px=20 %}</a>
 </section>
